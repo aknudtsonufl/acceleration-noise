@@ -227,14 +227,13 @@ a_OG = dF_OGdT.*dTf/m;
 dFdT = dF_RdT+dF_RPdT+dF_OGdT;
 uppLim = dFdT*5e-3/1.96
 
-a_TG = a_R + a_RP + a_OG;
+a_TG = sqrt(a_R.^2 + a_RP.^2 + a_OG.^2);
 
 
 figure
 loglog(f,a_TG,f,a_R,f,a_RP,f,a_OG)
 grid()
 legend('Total Thermal Effects','Radiometer','Radiation Pressure','Outgassing')
-title('Thermal Effects')
 xlabel('Frequency (Hz)')
 ylabel('Acceleration Noise (m/s^2/Hz^{1/2})')
 %% Spacecraft Self Gravity
